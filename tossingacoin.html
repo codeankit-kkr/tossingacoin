@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            padding: 10px;
+            border: 2px solid grey;
+            height: 600px;
+            background-color: #ff006255;
+            text-align: center;
+            color: rgb(33, 33, 63);
+        }
+        .headimg,.tailimg{
+            display: inline-block;
+            /* border: 1px solid green; */
+            margin-top: 50px;
+        }
+        img{
+            width: 200px;
+            border-radius: 100%;
+            border: 2px solid rgb(33, 33, 63);
+            padding: 5px;
+        }
+        .headimg{
+            margin-right: 200px;
+        }
+        .tailimg{
+            margin-left: 200px;
+        }
+        .first{
+            margin-top: 20px;
+            display: inline-block;
+            margin: 10px;
+            width: 30%;
+            height: 50px;
+            border: 1px solid grey;
+            font-size: 1.5rem;
+            background-color: rgb(33, 33, 63);
+            color: white;
+        }
+        .first:hover{
+            color: rgb(33, 33, 63);
+            background-color: white;
+            border: 1px solid rgb(33, 33, 63);
+            cursor: pointer;
+        }
+        .Table{
+            display: flex;
+            justify-content: center;
+        }
+        table ,td{
+            border: 2px solid rgb(33, 33, 63);
+            border-collapse: collapse;
+            margin: 10px;
+            padding: 20px;
+        }
+        table{
+            width: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Program to toss a coin and count the frequency.</h1>
+        <div class="headimg" >
+            <img src="head-modified.png" alt="" id="headimg">
+        </div>
+        <div class="tailimg" >
+            <img src="tail-modified.png" alt="" id="tailimg">
+        </div>
+        <div class="button-cont">
+            <button class="first" onclick="toss()">Toss Me</button>
+        </div>
+        <div class="Table">
+            <table>
+                <tr>
+                    <th>Face</th>
+                    <th>Frequency</th>
+                    <th>Percentage</th>
+                </tr>
+                <tr>
+                    <td>H</td>
+                    <td class="fh"></td>
+                    <td class="ph"></td>
+                </tr>
+                <tr>
+                    <td>T</td>
+                    <td class="ft"></td>
+                    <td class="pt"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+
+<script>
+    function toss(){
+        // alert("tossing");
+    var a =Math.floor(Math.random()*2)+1;
+    var b =Math.floor(Math.random()*2)+1;
+    if(a==1){
+        document.getElementById("headimg").src = "head-modified.png";
+    }
+    else if(a==2){
+        document.getElementById("headimg").src = "tail-modified.png";
+    }
+    
+    if(b==1){
+        document.getElementById("tailimg").src = "head-modified.png";
+    }
+    else if(b==2){
+        document.getElementById("tailimg").src = "tail-modified.png";
+    }
+    var fh=0;
+    var ft=0;
+    var pt=0,ph =0;
+    if(a==1 && b==1){
+        fh = 2;
+        ft = 0;
+        ph=100;
+        pt =0;
+    }
+    else if(a==2 && b==2){
+        ft = 2;
+        fh = 0;
+        pt =100;
+        ph = 0;
+    }
+    else{
+        ft =  1;
+        pt = ph = 50;
+        fh = 1;
+    }
+    document.getElementsByClassName("fh")[0].innerHTML = fh;
+    document.getElementsByClassName("ft")[0].innerHTML = ft;
+    document.getElementsByClassName("pt")[0].innerHTML = pt+"%";
+    document.getElementsByClassName("ph")[0].innerHTML = ph+"%";
+
+    }
+</script>
+</html>
